@@ -1,0 +1,465 @@
+/* RoomsList.css - финальная версия */
+
+.my-rooms-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, sans-serif;
+}
+
+/* Заголовок */
+.rooms-header {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.rooms-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.rooms-header .subtitle {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Панель инструментов */
+.rooms-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.search-section {
+  width: 100%;
+}
+
+/* Обертка для поиска с иконкой */
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.search-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Поле поиска */
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 44px; /* Левое padding больше для иконки */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.search-input:focus + .search-icon {
+  color: #4a90e2;
+}
+
+/* Секция фильтров */
+.filters-section {
+  width: 100%;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #eaeaea;
+}
+
+/* Фильтр по цене */
+.price-filter h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.price-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.price-input-group {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.price-input-group label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.price-input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.price-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.currency {
+  position: absolute;
+  right: 12px;
+  top: 38px; /* Позиционируем относительно label + input */
+  color: #666;
+  font-weight: 500;
+}
+
+.clear-filters-btn {
+  padding: 12px 20px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 44px;
+  min-width: 100px;
+}
+
+.clear-filters-btn:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.clear-filters-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Информация о фильтрах */
+.filter-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background: #e3f2fd;
+  border-radius: 8px;
+  border-left: 4px solid #4a90e2;
+}
+
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: white;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a90e2;
+  border: 1px solid #bbdefb;
+}
+
+.filter-count {
+  margin-left: auto;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Состояние при отсутствии комнат */
+.empty-state {
+  text-align: center;
+  padding: 64px 24px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-top: 32px;
+}
+
+.empty-state h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.empty-state p {
+  font-size: 16px;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Кнопка сброса в пустом состоянии */
+.reset-filters-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-filters-btn:hover {
+  background: #3a80d2;
+}
+
+/* Сетка карточек */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Карточка комнаты */
+.room-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.room-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #d0d0d0;
+}
+
+.room-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.room-price {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.room-price strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Кнопки действий */
+.room-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.room-actions button {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+/* Кнопка "Забронировать" */
+.room-actions button:only-child {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.room-actions button:only-child:hover {
+  background-color: #3a80d2;
+}
+
+/* Кнопки для владельца */
+.room-actions button:first-child:not(:only-child) {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.room-actions button:first-child:not(:only-child):hover {
+  background-color: #e0e0e0;
+}
+
+.room-actions button:last-child:not(:only-child) {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.room-actions button:last-child:not(:only-child):hover {
+  background-color: #ff5252;
+}
+
+/* Состояние загрузки */
+.my-rooms-container > p {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .my-rooms-container {
+    padding: 16px 12px;
+  }
+
+  .rooms-header h1 {
+    font-size: 26px;
+  }
+
+  .rooms-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .room-card {
+    padding: 16px;
+  }
+
+  .room-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search-input,
+  .search-input-wrapper {
+    max-width: 100%;
+  }
+
+  .price-inputs {
+    flex-direction: column;
+  }
+
+  .price-input-group {
+    min-width: 100%;
+  }
+
+  .clear-filters-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .filter-info {
+    flex-wrap: wrap;
+  }
+
+  .filter-count {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .room-actions button {
+    padding: 12px;
+  }
+}
+/* Стили для статусов комнат */
+.room-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.room-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-available {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.status-maintenance {
+  background-color: #fff3e0;
+  color: #ef6c00;
+  border: 1px solid #ffcc80;
+}
+
+.status-blocked {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.status-archived {
+  background-color: #f5f5f5;
+  color: #616161;
+  border: 1px solid #e0e0e0;
+}
+
+.status-unknown {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #bbdefb;
+}
+
+/* Стили для отключенных кнопок */
+.room-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #cccccc;
+}
+
+.delete-btn:disabled {
+  background-color: #cccccc;
+}

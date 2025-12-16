@@ -1,0 +1,139 @@
+/* Базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Хедер */
+.wonday-header {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+@media (min-width: 768px) {
+  .wonday-header {
+    padding: 40px 16px;
+  }
+}
+
+/* Контейнер хедера */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Логотип и бренд */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-svg {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2e2e2e;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .brand-name {
+    display: block;
+  }
+}
+
+/* Навигация */
+.main-nav {
+  display: none;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .main-nav {
+    display: flex;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-nav {
+    gap: 32px;
+  }
+}
+
+.nav-link {
+  font-size: 16px;
+  color: #2e2e2e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #d4af37;
+}
+
+/* Иконки действий */
+.actions-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .actions-container {
+    gap: 24px;
+  }
+}
+
+.icon-button {
+  color: #2e2e2e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon-button:hover {
+  color: #d4af37;
+}
+
+.profile-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f5f5dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2e2e2e;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profile-button:hover {
+  background-color: #d4af37;
+}
+
+/* Иконки */
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
+.icon-small {
+  width: 20px;
+  height: 20px;
+}
