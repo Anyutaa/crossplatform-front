@@ -339,7 +339,7 @@
 
 .booking-title h3 div {
   font-weight: 600;
-  color: #667eea; 
+  color: #667eea;
   font-size: 18px;
 }
 
@@ -484,12 +484,14 @@
 .info-label {
   color: #666;
   font-size: 14px;
+  text-align: left;
 }
 
 .info-value {
   font-weight: 600;
   color: #2c3e50;
   font-size: 14px;
+  text-align: left;
 }
 
 .rating {

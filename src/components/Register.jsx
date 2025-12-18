@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/Register.css";
 import { register } from "../services/authService";
 import { Link } from "react-router-dom";
+import DecorativeCircles from "./DecorativeCircles";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +18,9 @@ const Register = () => {
     confirmPassword: "",
   });
   const [serverError, setServerError] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -35,13 +36,15 @@ const Register = () => {
     };
 
     let isValid = true;
+
     // Name
-    if (!formData.name) {
+    if (!formData.name.trim()) {
       newErrors.name = "Имя обязательно";
       isValid = false;
     }
+
     // Email
-    if (!formData.email) {
+    if (!formData.email.trim()) {
       newErrors.email = "Email обязателен";
       isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -92,72 +95,96 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <main className="register-form-container">
-        <h1 className="register-title">Регистрация</h1>
+    <div className="register-page">
+      {/* ФОН */}
+      <div className="register-background">
+        <DecorativeCircles />
+      </div>
 
-        <form onSubmit={handleSubmit}>
-          {/* Name */}
-          <div className="form-group">
-            <label htmlFor="name">Имя:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            {errors.name && <p className="error">{errors.name}</p>}
-          </div>
-          {/* Email */}
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {errors.email && <p className="error">{errors.email}</p>}
-          </div>
+      {/* КОНТЕНТ */}
+      <div className="register-center">
+        <div className="register-form-container">
+          <h1 className="register-title">Регистрация</h1>
 
-          {/* Password */}
-          <div className="form-group">
-            <label htmlFor="password">Пароль:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            {errors.password && <p className="error">{errors.password}</p>}
-          </div>
+          {serverError && (
+            <div className="server-error">
+              <p className="error">{serverError}</p>
+            </div>
+          )}
 
-          {/* Confirm password */}
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Подтвердите пароль:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-            />
-            {errors.confirmPassword && (
-              <p className="error">{errors.confirmPassword}</p>
-            )}
-          </div>
+          <form onSubmit={handleSubmit}>
+            {/* Name */}
+            <div className="form-group">
+              <label htmlFor="name">Имя:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={errors.name ? "error-input" : ""}
+                placeholder="Введите ваше имя"
+              />
+              {errors.name && <p className="error">{errors.name}</p>}
+            </div>
 
-          <button type="submit" className="submit-button">
-            Зарегистрироваться
-          </button>
-          <p className="login-register-link">
-            <Link to="/login">Войти</Link>
-          </p>
-        </form>
-      </main>
+            {/* Email */}
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={errors.email ? "error-input" : ""}
+                placeholder="example@mail.com"
+              />
+              {errors.email && <p className="error">{errors.email}</p>}
+            </div>
+
+            {/* Password */}
+            <div className="form-group">
+              <label htmlFor="password">Пароль:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className={errors.password ? "error-input" : ""}
+                placeholder="Минимум 6 символов"
+              />
+              {errors.password && <p className="error">{errors.password}</p>}
+            </div>
+
+            {/* Confirm password */}
+            <div className="form-group">
+              <label htmlFor="confirmPassword">Подтвердите пароль:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className={errors.confirmPassword ? "error-input" : ""}
+                placeholder="Повторите пароль"
+              />
+              {errors.confirmPassword && (
+                <p className="error">{errors.confirmPassword}</p>
+              )}
+            </div>
+
+            <button type="submit" className="submit-button">
+              Зарегистрироваться
+            </button>
+
+            <p className="login-link">
+              Уже есть аккаунт? <Link to="/login">Войти</Link>
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

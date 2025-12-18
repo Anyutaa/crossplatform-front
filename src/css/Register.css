@@ -1,49 +1,309 @@
-.register-container {
-  width: 100%;
+/* Register.css */
+
+/* Страница регистрации */
+.register-page {
+  min-height: 50vh;
+  background-color: white;
+  position: relative;
+
+  z-index: 1;
+}
+
+/* Форма по центру */
+.register-center {
+  position: relative;
+  z-index: 10;
   display: flex;
-  justify-content: center; /* центрируем по горизонтали */
-  padding: 40px 0; /* отступы сверху и снизу */
-  background: #fff;
-}
-
-.register-form-container {
-  width: 350px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  background-color: #f2e2c5;
-  border-radius: 6px;
 }
 
+/* Контейнер формы */
+.register-form-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 45px 40px;
+  background-color: rgba(242, 226, 197, 0.98);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(190, 138, 84, 0.2);
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Заголовок */
 .register-title {
   text-align: center;
-  margin-top: 0;
+  margin: 0 0 40px 0;
+  color: #5a4d41;
+  font-size: 34px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.5px;
 }
 
+/* Группы формы */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 24px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  color: #5a4d41;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
 }
 
 .form-group input {
-  width: 95%;
-  padding: 8px;
+  width: 100% !important;
+
+  padding: 0px 20px;
+  border: 2px solid rgba(226, 214, 192, 0.9);
+  border-radius: 12px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #5a4d41;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+  display: block;
+}
+
+.form-group input:hover {
+  border-color: #c5a57e;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #be8a54;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(190, 138, 84, 0.15);
+}
+
+.form-group input::placeholder {
+  color: #a09384;
+  opacity: 0.7;
+}
+
+/* Стили ошибок */
+.error-input {
+  border-color: #e53e3e !important;
 }
 
 .error {
-  color: red;
-  font-size: 12px;
+  color: #e53e3e;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 500;
+  min-height: 20px;
 }
 
+.server-error {
+  background: rgba(254, 215, 215, 0.95);
+  border: 1px solid #fc8181;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 30px;
+  color: #c53030;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Кнопка */
 .submit-button {
-  width: 100%;
-  padding: 10px;
+  width: 100% !important;
+  padding: 19px;
   background-color: #be8a54;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.submit-button:hover {
+  background-color: #a97444;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(190, 138, 84, 0.4);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 20px rgba(190, 138, 84, 0.3);
+}
+
+/* Ссылка на вход */
+.login-link {
+  text-align: center;
+  margin-top: 28px;
+  color: #7a6e62;
+  font-size: 15px;
+}
+
+.login-link a {
+  color: #be8a54;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.login-link a:hover {
+  color: #a97444;
+  background: rgba(190, 138, 84, 0.1);
+  text-decoration: none;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === Стили для декоративных кругов === */
+/* Фоновый слой с кругами */
+.register-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Общие стили для кругов */
+.decorative-circle {
+  position: absolute;
+  top: 0 !important;
+  height: 100%;
+  width: 300px;
+  pointer-events: none;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Левый круг */
+.decorative-circle-left {
+  left: 0;
+}
+
+/* Правый круг */
+.decorative-circle-right {
+  right: 0;
+}
+
+/* SVG внутри кругов */
+.decorative-circle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Адаптивность для больших экранов */
+@media (min-width: 1920px) {
+  .decorative-circle {
+    width: 350px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .decorative-circle {
+    width: 320px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .decorative-circle {
+    width: 280px;
+  }
+}
+
+/* На планшетах делаем еще меньше */
+@media (max-width: 1024px) {
+  .decorative-circle {
+    width: 220px;
+  }
+}
+
+/* На мобильных скрываем декорации */
+@media (max-width: 768px) {
+  .decorative-circle {
+    display: none;
+  }
+
+  .register-form-container {
+    padding: 35px 30px;
+    max-width: 400px;
+  }
+
+  .register-title {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+
+  .form-group input {
+    padding: 17px;
+  }
+
+  .submit-button {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-center {
+    padding: 15px;
+  }
+
+  .register-form-container {
+    padding: 30px 25px;
+    border-radius: 16px;
+    max-width: 350px;
+  }
+
+  .register-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 22px;
+  }
+
+  .form-group input {
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .submit-button {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .login-link {
+    margin-top: 25px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .register-form-container {
+    padding: 25px 20px;
+  }
+
+  .register-title {
+    font-size: 24px;
+  }
 }

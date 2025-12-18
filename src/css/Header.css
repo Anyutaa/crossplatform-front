@@ -1,3 +1,4 @@
+/* Header.css */
 /* Базовые стили */
 * {
   margin: 0;
@@ -5,18 +6,18 @@
   box-sizing: border-box;
 }
 
-/* Хедер */
+/* Хедер - ПРОЗРАЧНЫЙ ФОН и фиксированная позиция */
 .wonday-header {
-  width: 100%;
+  width: 90%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 20px 16px;
-}
-
-@media (min-width: 768px) {
-  .wonday-header {
-    padding: 40px 16px;
-  }
+  padding: 40px 16px;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
 }
 
 /* Контейнер хедера */
@@ -57,18 +58,12 @@
 .main-nav {
   display: none;
   align-items: center;
-  gap: 24px;
 }
 
 @media (min-width: 1024px) {
   .main-nav {
     display: flex;
-  }
-}
-
-@media (min-width: 1280px) {
-  .main-nav {
-    gap: 32px;
+    justify-content: space-between;
   }
 }
 
@@ -76,11 +71,16 @@
   font-size: 16px;
   color: #2e2e2e;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px 16px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
 }
 
 .nav-link:hover {
   color: #d4af37;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 /* Иконки действий */
@@ -98,32 +98,42 @@
 
 .icon-button {
   color: #2e2e2e;
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
 }
 
 .icon-button:hover {
   color: #d4af37;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .profile-button {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: #f5f5dc;
+  background-color: rgba(245, 245, 220, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #2e2e2e;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(5px);
 }
 
 .profile-button:hover {
-  background-color: #d4af37;
+  background-color: rgba(212, 175, 55, 0.7);
+  color: white;
 }
 
 /* Иконки */
@@ -136,4 +146,217 @@
 .icon-small {
   width: 20px;
   height: 20px;
+}
+
+/* Мобильное меню */
+.mobile-menu-button {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  color: #2e2e2e;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  backdrop-filter: blur(5px);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  transition: right 0.3s ease;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-sidebar.open {
+  right: 0;
+}
+
+.mobile-sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.mobile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-user-avatar {
+  width: 48px;
+  height: 48px;
+  background: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+}
+
+.mobile-user-details {
+  flex: 1;
+}
+
+.mobile-user-name {
+  font-weight: 600;
+  color: #2e2e2e;
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+.mobile-user-email {
+  color: #6c757d;
+  margin: 0;
+  font-size: 14px;
+}
+
+.mobile-nav {
+  flex: 1;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  color: #2e2e2e;
+  text-decoration: none;
+  transition: background 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.mobile-nav-link:hover {
+  background: #f8f9fa;
+}
+
+.mobile-nav-link.active {
+  background: #f8f9fa;
+  border-left-color: #2e2e2e;
+  font-weight: 500;
+}
+
+.mobile-nav-link span {
+  font-size: 16px;
+}
+
+.mobile-sidebar-actions {
+  padding: 20px;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-action-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mobile-action-button.register-button {
+  background: #2e2e2e;
+  color: white;
+}
+
+.mobile-action-button.register-button:hover {
+  background: #1a1a1a;
+}
+
+.mobile-action-button.logout-button {
+  background: #f8f9fa;
+  color: #dc3545;
+}
+
+.mobile-action-button.logout-button:hover {
+  background: #e9ecef;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1023px) {
+  /* Мобильные и планшеты: до 1023px */
+  .main-nav {
+    display: none !important;
+  }
+
+  .actions-container .icon-button:not(.mobile-menu-button) {
+    display: none !important;
+  }
+
+  .profile-button {
+    display: none !important;
+  }
+
+  .mobile-menu-button {
+    display: flex !important;
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Десктоп: от 1024px */
+  .mobile-menu-button {
+    display: none !important;
+  }
+
+  .mobile-sidebar,
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+
+  .main-nav {
+    display: flex !important;
+  }
+
+  .actions-container .icon-button:not(.mobile-menu-button) {
+    display: flex !important;
+  }
+
+  .profile-button {
+    display: flex !important;
+  }
+}
+
+/* === ОБЩИЙ ОТСТУП ДЛЯ ВСЕХ СТРАНИЦ === */
+/* Добавляем отступ сверху для основного контента, чтобы не перекрывался фиксированным header */
+body {
+  padding-top: 80px; /* Отступ равен высоте header */
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 100px; /* Больший отступ для десктопа */
+  }
 }

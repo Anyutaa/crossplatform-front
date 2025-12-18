@@ -249,10 +249,7 @@ const MyBookings = () => {
                     <div className="booking-actions">
                       {/* Ссылка на конкретную первую комнату */}
                       {booking.rooms?.[0] && (
-                        <Link
-                          to={`/my_rooms/${booking.rooms[0].roomId}`}
-                          className="action-btn"
-                        >
+                        <Link to={`/rooms`} className="action-btn">
                           <Eye size={18} /> Посмотреть комнату
                         </Link>
                       )}
